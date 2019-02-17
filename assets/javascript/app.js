@@ -54,6 +54,7 @@ $(".answer-container").hide();
 $(".score-container").hide();
 
 $(".answer").click(function () {
+    
     var selectedAnswer = "#" + $(this).attr('id');
     if ($(selectedAnswer).text() == correctAnswer) {
         score++;
