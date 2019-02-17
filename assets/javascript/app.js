@@ -2,6 +2,7 @@ var intervalId;
 var timeRemaining = 30;
 var correctAnswer;
 var score = 0;
+var currentQuestion = -1;
 
 //An array of question objects. 
 //'q' represents the questions, 'a1-a4' represents the answer choices, 'ca' represents the correct answer, and 'ai' represents the message shown on the answer screen.
@@ -12,7 +13,6 @@ var questions = [
     { q: "Which of the following is not a recruitable party member in 'Chrono Trigger'?", a1: "Magus", a2: "Frog", a3: "Robo", a4: "Lavos", ca: "Lavos", ai: "Lavos is actually the main antagonist in Chrono Trigger." },
     { q: "In 'Final Fantasy X', which one of Auron's body parts is nonfunctional?", a1: "Left Arm", a2: "Right Arm", a3: "Right Eye", a4: "His Brain", ca: "Right Eye", ai: "Contrary to popular belief, both of Auron's arms work. He is, however, missing an eye." },
 ]
-var currentQuestion = -1;
 
 function displayQuestion() {
     currentQuestion++;
@@ -41,7 +41,7 @@ function countdownTimer() {
     timeRemaining--;
     $(".time-remaining").html(timeRemaining);
     if (timeRemaining <= 0) {
-        clearInterval(intervalId);
+        timeRemaining = 30;
         $(".game-container").hide();
         $(".answer-container").show();
         $(".answer-info").text("Time's Up! " + questions[currentQuestion].ai);
